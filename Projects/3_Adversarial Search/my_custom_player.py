@@ -1,6 +1,11 @@
 
 from sample_players import DataPlayer
+from isolation import DebugState
 
+# https://github.com/zhengrui315/Udacity-AIND-Adversarial-Search
+# https://github.com/csawtelle/udacity-artificial-intelligence-isolation
+# https://github.com/juanbertgomez/AIND-Isolation
+# https://github.com/amhamor/Build-An-Adversarial-Game-Playing-Agent
 
 class CustomPlayer(DataPlayer):
     """ Implement your own agent to play knight's Isolation
@@ -45,5 +50,14 @@ class CustomPlayer(DataPlayer):
         # EXAMPLE: choose a random move without any search--this function MUST
         #          call self.queue.put(ACTION) at least once before time expires
         #          (the timer is automatically managed for you)
-        import random
-        self.queue.put(random.choice(state.actions()))
+        alpha = float("-inf")
+        beta = float("inf")
+
+        print(state,"\n",state.locs[self.player_id])
+        print(DebugState())
+        # def minitax(state, depth_remaining, depth_count, heuristic_type):
+        #     def custom_heuristic(state):
+        #         x1
+
+
+        # return action

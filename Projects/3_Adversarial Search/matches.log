@@ -1,0 +1,127 @@
+INFO:root:Search Configuration:
+Opponent: MINIMAX
+Rounds: 5
+Fair Matches: False
+Time Limit: 150
+Processes: 1
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Second agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939048295707337386092543, ply_count=1, locs=(66, None))
+History: [66]
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+Second agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+History: []
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Second agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082648447852210175, ply_count=1, locs=(45, None))
+History: [45]
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+Second agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+History: []
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Second agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683631687428095, ply_count=1, locs=(29, None))
+History: [29]
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+Second agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+History: []
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Second agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632157190143, ply_count=1, locs=(26, None))
+History: [26]
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+Second agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+History: []
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Second agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41502878794335470412259684973012991, ply_count=1, locs=(104, None))
+History: [104]
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+ERROR:sample_players:[Errno 2] No such file or directory: 'data.pickle'
+INFO:isolation:Initial game state: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+First agent: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+Second agent: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+
+INFO:isolation:Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent') get_action() method did not respond within 150 milliseconds
+INFO:isolation:Status: Status.TIMEOUT
+Final State: Isolation(board=41523161203939122082683632224299007, ply_count=0, locs=(None, None))
+History: []
+Winner: Agent(agent_class=<class 'sample_players.MinimaxPlayer'>, name='Minimax Agent')
+Loser: Agent(agent_class=<class 'my_custom_player.CustomPlayer'>, name='Custom Agent')
+
+INFO:__main__:Your agent won 0.0% of matches against Minimax Agent

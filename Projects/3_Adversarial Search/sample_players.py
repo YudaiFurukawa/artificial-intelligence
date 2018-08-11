@@ -21,7 +21,7 @@ class BasePlayer:
 
         See RandomPlayer and GreedyPlayer for examples.
         """
-        raise NotImplementedError
+        self.queue.put(random.choice(state.actions()))
 
 
 class DataPlayer(BasePlayer):
