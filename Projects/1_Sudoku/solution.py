@@ -1,6 +1,5 @@
-
 from utils import *
-
+#https://github.com/vxy10/AIND-Sudoku/blob/master/solution.py
 
 row_units = [cross(r, cols) for r in rows]
 column_units = [cross(rows, c) for c in cols]
@@ -49,7 +48,27 @@ def naked_twins(values):
     strategy repeatedly).
     """
     # TODO: Implement this function!
-    raise NotImplementedError
+    # print('naked_twin')
+    twins = [box for box in values.keys() if len(values[box]) == 2]
+    twins = [[box1,box2] for box1 in twins for box2 in peers[box1] if set(values[box1])==set(values[box2])]
+
+    # print(twins)
+    for i in range(len(twins)):
+        box1 = twins[i][0]
+        box2 = twins[i][1]
+        # find common peers
+        peers1 = set(peers[box1])
+        peers2 = set(peers[box2])
+        peers_common = peers1 & peers2
+        # delete the digit in the twins from common peers
+        for peers_box in peers_common:
+            # print(len(values[peers_common]))
+            if len(values[peers_box])>2:
+                for rm_val in values[box1]:
+                    values = assign_value(values, peers_box, values[peers_box].replace(rm_val,''))
+
+                # print(values)
+    return values
 
 
 def eliminate(values):
@@ -69,7 +88,16 @@ def eliminate(values):
         The values dictionary with the assigned values eliminated from peers
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    solved_values = [box for box in values.keys() if len(values[box])==1]
+    for box in solved_values:
+        digit = values[box]
+        # print(values[box])
+    # print(peers)
+        for peer in peers[box]:
+            # print(peer)
+            values[peer] = values[peer].replace(digit,'')
+    # print('elimination')
+    return values
 
 
 def only_choice(values):
@@ -93,7 +121,15 @@ def only_choice(values):
     You should be able to complete this function by copying your code from the classroom
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    for unit in unitlist:
+        # print(len(unit))
+        for digit in '123456789':
+            tmp = [box for box in unit if digit in values[box]]
+            # print(tmp)
+            if len(tmp) == 1:
+                values[tmp[0]]= digit
+    # print('onlychoice')
+    return values
 
 
 def reduce_puzzle(values):
@@ -111,7 +147,18 @@ def reduce_puzzle(values):
         no longer produces any changes, or False if the puzzle is unsolvable 
     """
     # TODO: Copy your code from the classroom and modify it to complete this function
-    raise NotImplementedError
+    solved_values = [box for box in values.keys() if len(values[box]) == 1]
+    stalled = False
+    while not stalled:
+        solved_values_before = len([box for box in values.keys() if len(values[box]) == 1])
+        values = eliminate(values)
+        values = only_choice(values)
+        values = naked_twins(values)
+        solved_values_after = len([box for box in values.keys() if len(values[box]) == 1])
+        stalled = solved_values_before == solved_values_after
+        if len([box for box in values.keys() if len(values[box]) == 0]):
+            return False
+    return values
 
 
 def search(values):
@@ -134,7 +181,20 @@ def search(values):
     and extending it to call the naked twins strategy.
     """
     # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    values = reduce_puzzle(values)
+    # print('search')
+    if values is False:
+        return False ## Failed earlier
+    if all(len(values[s]) == 1 for s in boxes):
+        return values ## Solved!
+    # Choose one of the unfilled squares with the fewest possibilities
+    n,s = min((len(values[s]), s) for s in boxes if len(values[s]) > 1)
+    for value in values[s]:
+        new_sudoku = values.copy()
+        new_sudoku[s] = value
+        attempt = search(new_sudoku)
+        if attempt:
+            return attempt
 
 
 def solve(grid):
@@ -154,11 +214,13 @@ def solve(grid):
     """
     values = grid2values(grid)
     values = search(values)
+
     return values
 
 
 if __name__ == "__main__":
-    diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
+    # diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
+    diag_sudoku_grid = values2grid({"C5": "23456    789", "C7": "2345678", "I7": "1", "I1": "2345678", "B7": "2345678", "B4": "345678", "C8": "3456789", "I6": "23678", "F7": "58", "A4": "34568", "A3": "7", "B9": "124578", "I8": "345678", "G7": "2345678", "H2": "12345678", "A8": "345689", "B1": "2345689", "E8": "1", "C9": "124578", "E9": "3", "G8": "345678", "B5": "23456789", "F6": "37", "H9": "24578", "C4": "345678", "A1": "2345689", "G2": "12345678", "F5": "37", "G9": "24578", "I2": "2345678", "H4": "345678", "A9": "2458", "D1": "36", "B3": "1234569", "D4": "1", "H8": "345678", "F9": "6", "B6": "236789", "D6": "5", "F3": "24", "E2": "567", "I5": "2345678", "H3": "1234569", "D8": "2", "G6": "1236789", "D2": "9", "G5": "23456789", "G3": "1234569", "A7": "234568", "E1": "567", "H7": "2345678", "C6": "236789", "D9": "47", "E5": "678", "B8": "3456789", "A5": "1", "E3": "56", "B2": "1234568", "D7": "47", "G4": "345678", "F2": "24", "G1": "23456789", "E7": "9", "A6": "23689", "A2": "234568", "E4": "2", "I4": "345678", "D3": "8", "C1": "2345689", "E6": "4", "I3": "23456", "H6": "1236789", "F4": "9", "H5": "23456789", "F1": "1", "F8": "58", "I9": "9", "C3": "1234569", "D5": "36", "H1": "23456789", "C2": "1234568"})
     display(grid2values(diag_sudoku_grid))
     result = solve(diag_sudoku_grid)
     display(result)

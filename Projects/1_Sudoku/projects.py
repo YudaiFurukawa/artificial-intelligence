@@ -12,3 +12,5 @@ def submit(args):
   udacity.submit(nanodegree, projects[0], filenames, 
                  environment = args.environment,
                  jwt_path = args.jwt_path)
+
+# print('done')
