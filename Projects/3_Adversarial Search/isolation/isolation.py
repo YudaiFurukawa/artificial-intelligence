@@ -1,10 +1,8 @@
-
 ###############################################################################
 #                          DO NOT MODIFY THIS FILE                            #
 ###############################################################################
 from enum import IntEnum
 from typing import NamedTuple
-
 
 # board array dimensions and bitboard size
 _WIDTH = 11
@@ -14,22 +12,24 @@ _SIZE = (_WIDTH + 2) * _HEIGHT - 2
 # Build the prototype bitboard, which is a bitstring (e.g., 1110011100111
 # is a 3x3 rectangular grid) See the isolation module readme for full details.
 _BLANK_BOARD = 0
-row = ((1<<_WIDTH) - 1)
+row = ((1 << _WIDTH) - 1)
 for _ in range(_HEIGHT): _BLANK_BOARD = ((_BLANK_BOARD << (_WIDTH + 2)) | row)
 
 # declare constants describing the bit-wise offsets for each cardinal direction
 S, N, W, E = -_WIDTH - 2, _WIDTH + 2, 1, -1
 
+
 class Action(IntEnum):
     """ The eight L-shaped steps that a knight can move in chess """
-    NNE = N+N+E  # north-northeast (up, up, right)
-    ENE = E+N+E  # east-northeast (right, right, up)
-    ESE = E+S+E  # east-southeast (right, right, down)
-    SSE = S+S+E  # south-southeast (down, down, right)
-    SSW = S+S+W  # south-southwest (down, down, left)
-    WSW = W+S+W  # west-southwest (left, left, down)
-    WNW = W+N+W  # west-northwest (left, left, up)
-    NNW = N+N+W  # north-northwest (up, up, left)
+    NNE = N + N + E  # north-northeast (up, up, right)
+    ENE = E + N + E  # east-northeast (right, right, up)
+    ESE = E + S + E  # east-southeast (right, right, down)
+    SSE = S + S + E  # south-southeast (down, down, right)
+    SSW = S + S + W  # south-southwest (down, down, left)
+    WSW = W + S + W  # west-southwest (left, left, down)
+    WNW = W + N + W  # west-northwest (left, left, up)
+    NNW = N + N + W  # north-northwest (up, up, left)
+
 
 _ACTIONSET = set(Action)  # used for efficient membership testing
 
@@ -56,6 +56,7 @@ class Isolation(NamedTuple('Isolation', [('board', int), ('ply_count', int), ('l
         each player is None while the player has not yet placed their piece
         on the board; otherwise an integer.
     """
+
     def __new__(cls, board=_BLANK_BOARD, ply_count=0, locs=(None, None)):
         return super(Isolation, cls).__new__(cls, board, ply_count, locs)
 
@@ -206,13 +207,15 @@ class DebugState(Isolation):
     |   |   |   |   |   |   |   |   |   |   |   |
     + - + - + - + - + - + - + - + - + - + - + - +
     """
-    player_symbols=['1', '2']
-    
+    player_symbols = ['1', '2']
+
     @staticmethod
-    def from_state(gamestate): return DebugState(gamestate.board, gamestate.ply_count, gamestate.locs)
+    def from_state(gamestate):
+        return DebugState(gamestate.board, gamestate.ply_count, gamestate.locs)
 
     @property
-    def bitboard_string(self): return "{:b}".format(self.board)
+    def bitboard_string(self):
+        return "{:b}".format(self.board)
 
     @classmethod
     def ind2xy(cls, ind):

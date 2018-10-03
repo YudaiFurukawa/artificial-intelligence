@@ -1,11 +1,7 @@
 
 from sample_players import DataPlayer
 from isolation import DebugState
-
-# https://github.com/zhengrui315/Udacity-AIND-Adversarial-Search
-# https://github.com/csawtelle/udacity-artificial-intelligence-isolation
-# https://github.com/juanbertgomez/AIND-Isolation
-# https://github.com/amhamor/Build-An-Adversarial-Game-Playing-Agent
+import random
 
 class CustomPlayer(DataPlayer):
     """ Implement your own agent to play knight's Isolation
@@ -35,7 +31,7 @@ class CustomPlayer(DataPlayer):
         See RandomPlayer and GreedyPlayer in sample_players for more examples.
 
         **********************************************************************
-        NOTE: 
+        NOTE:
         - The caller is responsible for cutting off search, so calling
           get_action() from your own code will create an infinite loop!
           Refer to (and use!) the Isolation.play() function to run games.
@@ -50,11 +46,59 @@ class CustomPlayer(DataPlayer):
         alpha = float("-inf")
         beta = float("inf")
 
-        print(state,"\n",state.locs[self.player_id])
-        print(DebugState())
-        # def minitax(state, depth_remaining, depth_count, heuristic_type):
-        #     def custom_heuristic(state):
-        #         x1
+        def minitax(state, depth_remaining, depth_count, heuristic_type):
+            def custom_heuristic(state):
+                own_moves = len(state.liberties(state.locs[self.player_id]))
+                opp_moves = len(state.liberties(state.locs[self.player_id - 1]))
+
+                if own_moves < 5:
+                    return (2 * own_moves) - (opp_moves)
+                else:
+                    return (own_moves) - (2 * opp_moves)
+            def baseline_heuristic(state):
+                return len(state.liberties(state.locs[self.player_id])) - len(state.liberties(state.locs[self.player_id-1]))
+            def minimum(state, alpha, beta, depth_remaining, depth_count):
+                if state.terminal_test():
+                    return state.utility(self.player_id)
+                if depth_remaining <= 0:
+                    if heuristic_type == 'custom':
+                        return custom_heuristic(state)
+                    if heuristic_type == 'baseline':
+                        # print(baseline_heuristic(state))
+                        return baseline_heuristic(state)
+                value = float("inf")
+                for action in state.actions():
+                    value = min(value, maximum(state.result(action),alpha, beta, depth_remaining - 1, depth_count + 1))
+                    if value <=alpha: return value
+                    beta = min(beta, value)
+                return value
+
+            def maximum(state, alpha, beta, depth_remaining, depth_count):
+                # print(depth_remaining)
+                if state.terminal_test():
+                    return state.utility(self.player_id)
+                if depth_remaining <= 0:
+                    if heuristic_type == 'custom':
+                        return custom_heuristic(state)
+                    if heuristic_type == 'baseline':
+                        return baseline_heuristic(state)
+                value = float("-inf")
+                for action in state.actions():
+                    value = max(value, minimum(state.result(action),alpha, beta, depth_remaining - 1, depth_count + 1))
+                    if value >=beta: return value
+                    alpha = max(beta, value)
+                return value
+
+            return max(state.actions(), key = lambda x:minimum(state.result(x),alpha,beta,depth_remaining -1, depth_count + 1))
+
+        def greedy_play(state):
+            return max(state.actions(), key = lambda x:len(state.result(x).liberties(state.locs[self.player_id])))
+
+        if state.ply_count <= 2:
+            self.queue.put(greedy_play(state))
+        else:
+            self.queue.put(minitax(state,depth_remaining=7, depth_count=0,heuristic_type='custom'))
 
 
-        # return action
+
+
